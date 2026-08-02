@@ -70,6 +70,7 @@ export default function PortfolioModal({
     controls
     autoPlay
     playsInline
+      preload="none"
     className="w-full h-full object-contain"
   />
 </div>

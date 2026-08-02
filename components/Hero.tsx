@@ -10,13 +10,13 @@ export function Hero() {
       {/* Background */}
      <div className="absolute inset-0 z-0">
 
-  <video
+ <video
   autoPlay
   muted
   loop
   playsInline
-  controls
-  className="absolute inset-0 w-full h-full object-cover z-0"
+  preload="none"
+  className="absolute inset-0 w-full h-full ..."
 >
   <source src={heroSection.video} type="video/mp4" />
 </video>

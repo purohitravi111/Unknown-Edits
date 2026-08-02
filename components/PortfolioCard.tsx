@@ -51,7 +51,7 @@ export default function PortfolioCard({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
 
