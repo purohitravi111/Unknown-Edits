@@ -4,6 +4,7 @@ import { ThemeProvider } from '../components/ThemeProvider';
 import { seoConfig } from '../config/seo';
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://unknown-edits.vercel.app"),
   title: seoConfig.title,
   description: seoConfig.description,
   keywords: seoConfig.keywords,
