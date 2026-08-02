@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion } from "motion/react";
 import { PortfolioProject } from "../types";
+import Image from "next/image";
 
 interface PortfolioCardProps {
   project: PortfolioProject;
@@ -14,20 +15,15 @@ export default function PortfolioCard({
   onClick,
 }: PortfolioCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+const [isHovered, setIsHovered] = React.useState(false);
 
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    }
-  };
+ const handleMouseEnter = () => {
+  setIsHovered(true);
+};
 
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+const handleMouseLeave = () => {
+  setIsHovered(false);
+};
 
   return (
     <motion.div
@@ -45,22 +41,32 @@ export default function PortfolioCard({
         } rounded-[var(--radius-base)] overflow-hidden bg-[var(--bg-default)] mb-4`}
       >
         {/* Preview Video */}
-        <video
-          ref={videoRef}
-          src={project.previewVideo}
-          muted
-          loop
-          playsInline
-          preload="none"
-          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        />
+        {isHovered && (
+  <video
+    ref={videoRef}
+    src={project.previewVideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+)}
 
         {/* Thumbnail */}
-        <img
-          src={project.thumbnail}
-          alt={project.projectName}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-        />
+       <Image
+  src={project.thumbnail}
+  alt={project.projectName}
+  fill
+  sizes={
+    project.category === "Long Form"
+      ? "(max-width: 768px) 100vw, 50vw"
+      : "(max-width: 768px) 50vw, 25vw"
+  }
+  className={`absolute inset-0 object-cover transition-opacity duration-300 ${
+    isHovered ? "opacity-0" : "opacity-100"
+  }`}
+/>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

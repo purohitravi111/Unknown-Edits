@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { heroSection } from '../data/content';
 import { Play } from 'lucide-react';
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -15,16 +16,19 @@ export function Hero() {
   muted
   loop
   playsInline
-  preload="none"
-  className="absolute inset-0 w-full h-full ..."
+  preload="metadata"
+  className="absolute inset-0 w-full h-full object-cover"
 >
   <source src={heroSection.video} type="video/mp4" />
 </video>
 
-  <img
+
+<Image
   src={heroSection.backgroundImage}
   alt="Hero Background"
-  className="absolute inset-0 w-full h-full object-cover opacity-0"
+  fill
+  priority
+  className="object-cover opacity-0"
 />
 
   <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-default)]/40 via-[var(--bg-default)]/80 to-[var(--bg-default)] z-10" />
