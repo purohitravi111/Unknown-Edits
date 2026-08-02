@@ -58,6 +58,8 @@ const handleMouseLeave = () => {
   src={project.thumbnail}
   alt={project.projectName}
   fill
+  loading="eager"
+  fetchPriority="high"
   sizes={
     project.category === "Long Form"
       ? "(max-width: 768px) 100vw, 50vw"

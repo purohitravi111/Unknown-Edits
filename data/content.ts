@@ -397,7 +397,7 @@ export const team: TeamMember[] = [
   {
     name: "Ravi Purohit",
     role: "Founder & Creative Director",
-    photo: "/images/ravi.png",
+    photo: "/images/ravi.webp",
     bio: "With over 4 years of post-production experience, Ravi leads the creative vision for all major campaigns.",
     socialLinks: { linkedin: "#", twitter: "#" },
     skills: ["Creative Direction", "Client Management ", "Project Management","Video Editing"]
@@ -405,7 +405,7 @@ export const team: TeamMember[] = [
   {
     name: "Akshay Purohit",
     role: "Co-Founder & Lead Video Editor",
-    photo: "/images/Akshay.png",
+    photo: "/images/Akshay.webp",
     bio: "Akshay specializes in cinematic video editing, storytelling, pacing, and post-production, transforming raw footage into engaging, high-quality visual content.",
     socialLinks: { behance: "#", instagram: "#" },
     skills: ["Video Editing", "Color Grading", "Motion Graphics","Sound Design"]

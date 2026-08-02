@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { team } from '../data/content';
+import Image from "next/image";
 
 export function Team() {
   return (
@@ -25,11 +26,13 @@ export function Team() {
               className="bg-[var(--bg-default)] rounded-[var(--radius-lg)] overflow-hidden border border-white/5 group"
             >
               <div className="relative aspect-square overflow-hidden bg-[var(--bg-paper)]">
-                <img 
-                  src={member.photo} 
-                  alt={member.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
-                />
+               <Image
+  src={member.photo}
+  alt={member.name}
+  fill
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+/>
               </div>
               <div className="p-8 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-[var(--primary)] mb-1">{member.name}</h3>
