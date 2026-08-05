@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { PortfolioProject } from "../types";
+import React, { useEffect, useState } from "react";
+
+
 
 interface Props {
   project: PortfolioProject | null;
@@ -16,6 +19,8 @@ export default function PortfolioModal({
   isOpen,
   onClose,
 }: Props) {
+
+  const [isVertical, setIsVertical] = useState(false);
   useEffect(() => {
     if (!isOpen) return;
 
@@ -47,7 +52,13 @@ export default function PortfolioModal({
         >
           <motion.div
   
-           className="relative w-full max-w-7xl h-[90vh] rounded-2xl overflow-hidden bg-[#111] flex flex-col"
+         className={`relative rounded-2xl overflow-hidden bg-[#111] transition-all duration-300
+${
+  isVertical
+    ? "w-[380px] h-[90vh]"
+    : "w-full max-w-7xl h-[90vh]"
+}
+flex flex-col`}
             initial={{ scale: .95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: .95, opacity: 0 }}
@@ -66,13 +77,17 @@ export default function PortfolioModal({
   
 >
   <video
-    src={project.fullVideo}
-    controls
-    autoPlay
-    playsInline
-      preload="metadata"
-    className="w-full h-full object-contain"
-  />
+  src={project.fullVideo}
+  controls
+  autoPlay
+  playsInline
+  preload="metadata"
+  onLoadedMetadata={(e) => {
+    const video = e.currentTarget;
+    setIsVertical(video.videoHeight > video.videoWidth);
+  }}
+  className="w-full h-full object-contain"
+/>
 </div>
 
             <div className="p-8 overflow-y-auto">
