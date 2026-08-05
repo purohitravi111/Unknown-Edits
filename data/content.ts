@@ -12,9 +12,9 @@ export const agencyInfo: AgencyInfo = {
   name: "UNKNOWN EDITS",
   tagline: "We edit. You scale.",
   description: "We are a premier video editing agency dedicated to transforming raw footage into captivating visual stories that drive engagement and convert audiences.",
-  email: "hello@unknownedits.com",
-  phone: "+1 (555) 123-4567",
-  location: "Los Angeles, CA",
+  email: "unknownedits2905@gmail.com",
+  phone: "+91-9274527632",
+  location: "Anand, Gujarat",
   businessHours: "Mon-Fri, 9AM - 6PM PST",
   foundedYear: 2020,
   logo: "/logos/logo.svg",
@@ -44,7 +44,7 @@ export const heroSection: HeroSection = {
   thumbnail: "/images/hero-thumbnail.jpg",
   backgroundImage: "/images/hero-bg.jpg",
   stats: [
-    { label: "Projects Completed", value: "1,00+" },
+    { label: "Projects Completed", value: "100+" },
     { label: "Years Of Experience", value: "4+" },
     { label: "Commitment to Quality", value: "100%" },
     { label: "Average Response Time", value: "24 Hrs" }
@@ -87,7 +87,7 @@ export const services: Service[] = [
     featured: true
   },
   {
-    title: "Motion grahics",
+    title: "Motion graphics",
     description: "Custom 2D/3D animations, lower thirds, and visual effects to elevate your production value.",
     icon: Sparkles,
     image: "/images/service-motion.jpg",
