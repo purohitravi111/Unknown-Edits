@@ -416,7 +416,7 @@ export const team: TeamMember[] = [
 export const testimonials: Testimonial[] = [
   {
     clientName: "Ankish Jain", // SAMPLE ONLY: replace with a real client's public name
-    company: "Content Creator · Sample", // SAMPLE ONLY: replace with their approved role/company
+    company: "Content Creator ", // SAMPLE ONLY: replace with their approved role/company
     photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
     rating: 5, // SAMPLE ONLY: replace with a verified client rating, or use 0 to hide
     review: "The edit felt polished and clear from the first cut. The pacing kept the story moving and made the final video feel ready to share.", // SAMPLE ONLY: replace with the client's exact approved quote
@@ -424,7 +424,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     clientName: "Jordan Lee", // SAMPLE ONLY: replace with a real client's public name
-    company: "Small Business Owner · Sample", // SAMPLE ONLY: replace with their approved role/company
+    company: "Small Business Owner ", // SAMPLE ONLY: replace with their approved role/company
     photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
     rating: 5, // SAMPLE ONLY: replace with a verified client rating, or use 0 to hide
     review: "Communication was smooth throughout the project, and the finished cut matched the tone we wanted for our brand.", // SAMPLE ONLY: replace with the client's exact approved quote
@@ -442,7 +442,7 @@ export const testimonials: Testimonial[] = [
   
   {
     clientName: "Taylor Chen", // SAMPLE ONLY: replace with a real client's public name
-    company: "YouTube Creator · Sample", // SAMPLE ONLY: replace with their approved role/company
+    company: "YouTube Creator ", // SAMPLE ONLY: replace with their approved role/company
     photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
     rating: 5, // SAMPLE ONLY: replace with a verified client rating, or use 0 to hide
     review: "The final video had a strong flow and clean sound. It was easy to review the edits and give feedback along the way.", // SAMPLE ONLY: replace with the client's exact approved quote
