@@ -44,7 +44,7 @@ export const heroSection: HeroSection = {
   thumbnail: "/images/hero-thumbnail.jpg",
   backgroundImage: "/images/hero-bg.jpg",
   stats: [
-    { label: "Projects Completed", value: "100+" },
+    { label: "Projects Completed", value: "500" },
     { label: "Years Of Experience", value: "4+" },
     { label: "Commitment to Quality", value: "100%" },
     { label: "Average Response Time", value: "24 Hrs" }
