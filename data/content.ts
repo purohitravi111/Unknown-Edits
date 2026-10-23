@@ -71,7 +71,7 @@ export const services: Service[] = [
     description: "Engaging A-roll editing, dynamic B-roll, sound design, and retention-focused storytelling.",
     icon: MonitorPlay,
     image: "/images/service-long-form.jpg",
-    video: "/videos/hero-background.mp4",
+    video: "",
     cta: { label: "Learn More", url: "#contact" },
     displayOrder: 2,
     featured: true
@@ -81,7 +81,7 @@ export const services: Service[] = [
     description: "Direct-response video ads for Facebook, Instagram, and YouTube that actually convert.",
     icon: Clapperboard,
     image: "/images/service-commercial.jpg",
-    video: "https://youtu.be/-83iPP77htA?si=77FxW7Iw4zkRVVa4",
+    video: "",
     cta: { label: "Learn More", url: "#contact" },
     displayOrder: 3,
     featured: true
