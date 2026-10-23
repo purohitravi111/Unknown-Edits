@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+@keyframes testimonial-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.testimonial-marquee-track,
+.testimonial-marquee-group {
+  display: flex;
+  width: max-content;
+}
+
+.testimonial-marquee-group {
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.testimonial-marquee-track {
+  animation: testimonial-marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee-viewport {
+    overflow-x: auto;
+    mask-image: none;
+    scrollbar-width: thin;
+  }
+
+  .testimonial-marquee-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}

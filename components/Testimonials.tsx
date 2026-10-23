@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { Pause, Play, Quote, Star } from "lucide-react";
 import { testimonials } from "../data/content";
 
 function initials(name: string) {
@@ -17,126 +16,88 @@ function initials(name: string) {
 }
 
 export function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const entries = testimonials.filter((item) => item.review.trim() && item.clientName.trim());
-
-  useEffect(() => {
-    if (entries.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % entries.length);
-    }, 6500);
-
-    return () => window.clearInterval(timer);
-  }, [entries.length]);
 
   if (entries.length === 0) return null;
 
-  const active = entries[activeIndex % entries.length];
-  const previous = () => setActiveIndex((current) => (current - 1 + entries.length) % entries.length);
-  const next = () => setActiveIndex((current) => (current + 1) % entries.length);
+  const renderTestimonials = (isDuplicate = false) => (
+    <div className="testimonial-marquee-group" aria-hidden={isDuplicate}>
+      {entries.map((item, index) => (
+        <article
+          key={`${item.clientName}-${index}`}
+          className="relative flex w-[min(84vw,390px)] shrink-0 flex-col justify-between overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-[var(--bg-paper)] p-6 shadow-[var(--glow)] sm:w-[390px]"
+        >
+          <Quote aria-hidden="true" className="absolute right-5 top-5 h-8 w-8 rotate-180 text-[var(--accent)]/20" />
+          <div>
+            {item.rating > 0 && (
+              <div className="mb-3 flex items-center gap-1" aria-label={`${item.rating} out of 5 stars`}>
+                {Array.from({ length: item.rating }, (_, starIndex) => (
+                  <Star key={starIndex} aria-hidden="true" className="h-3.5 w-3.5 fill-[var(--accent)] text-[var(--accent)]" />
+                ))}
+              </div>
+            )}
+            <blockquote className="relative z-10 line-clamp-3 pr-6 text-sm leading-relaxed text-[var(--primary)] md:text-base">
+              “{item.review}”
+            </blockquote>
+          </div>
+
+          <div className="mt-5 flex items-center gap-3 border-t border-white/10 pt-4">
+            {item.photo ? (
+              <Image src={item.photo} alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+            ) : (
+              <div aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 text-xs font-bold text-[var(--accent)]">
+                {initials(item.clientName)}
+              </div>
+            )}
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-[var(--primary)]">{item.clientName}</p>
+              {item.company && <p className="mt-0.5 truncate text-xs text-[var(--secondary)]">{item.company}</p>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
 
   return (
-    <section
-      id="testimonials"
-      className="relative overflow-hidden bg-[var(--bg-default)] py-24 md:py-32"
-    >
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-[var(--accent)]/5 blur-[150px]" />
-      <div className="relative mx-auto max-w-5xl px-6">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+    <section id="testimonials" className="relative overflow-hidden bg-[var(--bg-default)] py-16 md:py-20">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-[var(--accent)]/5 blur-[130px]" />
+      <div className="relative">
+        <div className="mx-auto mb-8 max-w-5xl px-6 text-center">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--accent)]">
             Client testimonials
           </p>
+          <h2 className="text-3xl font-black leading-tight text-[var(--primary)] md:text-4xl">
+            Kind words from clients
+          </h2>
           {entries.some((item) => item.isSample) && (
-            <p className="mb-4 inline-flex rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
+            <p className="mx-auto mt-3 inline-flex rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
               Sample content — replace with real client feedback before publishing
             </p>
           )}
-          <h2 className="text-4xl font-black leading-tight text-[var(--primary)] md:text-5xl">
-            Good work speaks.<br />Our clients speak louder.
-          </h2>
         </div>
 
-        <div className="relative mx-auto max-w-4xl rounded-[var(--radius-lg)] border border-white/10 bg-[var(--bg-paper)] px-7 py-9 shadow-[var(--glow)] md:px-14 md:py-12">
-          <Quote aria-hidden="true" className="absolute right-8 top-8 h-12 w-12 rotate-180 text-[var(--accent)]/15 md:right-12 md:top-10" />
+        <div className="testimonial-marquee-viewport" aria-label="Client testimonials">
+          <div
+            className="testimonial-marquee-track"
+            style={{ animationPlayState: isPaused ? "paused" : "running" }}
+          >
+            {renderTestimonials()}
+            {renderTestimonials(true)}
+          </div>
+        </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              aria-live="polite"
-            >
-              {active.rating > 0 && (
-                <div className="mb-6 flex items-center gap-1" aria-label={`${active.rating} out of 5 stars`}>
-                  {Array.from({ length: active.rating }, (_, index) => (
-                    <Star key={index} aria-hidden="true" className="h-4 w-4 fill-[var(--accent)] text-[var(--accent)]" />
-                  ))}
-                </div>
-              )}
-              <blockquote className="relative z-10 min-h-28 text-xl font-medium leading-relaxed text-[var(--primary)] md:text-2xl">
-                “{active.review}”
-              </blockquote>
-
-              <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-white/10 pt-7">
-                <div className="flex min-w-0 items-center gap-4">
-                  {active.photo ? (
-                    <Image
-                      src={active.photo}
-                      alt=""
-                      width={56}
-                      height={56}
-                      className="h-14 w-14 rounded-full object-cover"
-                    />
-                  ) : (
-                    <div aria-hidden="true" className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 font-bold text-[var(--accent)]">
-                      {initials(active.clientName)}
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <p className="truncate font-bold text-[var(--primary)]">{active.clientName}</p>
-                    {active.company && <p className="mt-1 truncate text-sm text-[var(--secondary)]">{active.company}</p>}
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2" aria-label="Testimonial navigation">
-                  <button
-                    type="button"
-                    onClick={previous}
-                    aria-label="Previous testimonial"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
-                  >
-                    <ChevronLeft aria-hidden="true" className="h-5 w-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    aria-label="Next testimonial"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
-                  >
-                    <ChevronRight aria-hidden="true" className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {entries.length > 1 && (
-            <div className="mt-7 flex items-center justify-center gap-2" aria-label="Choose testimonial">
-              {entries.map((item, index) => (
-                <button
-                  key={`${item.clientName}-${index}`}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`Show testimonial ${index + 1}`}
-                  aria-current={index === activeIndex ? "true" : undefined}
-                  className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-9 bg-[var(--accent)]" : "w-5 bg-white/20 hover:bg-white/40"}`}
-                />
-              ))}
-            </div>
-          )}
+        <div className="mx-auto mt-5 flex max-w-5xl justify-center px-6">
+          <button
+            type="button"
+            onClick={() => setIsPaused((paused) => !paused)}
+            aria-label={isPaused ? "Resume testimonial movement" : "Pause testimonial movement"}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs font-medium text-[var(--secondary)] transition-colors hover:border-[var(--accent)]/50 hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+          >
+            {isPaused ? <Play aria-hidden="true" className="h-3.5 w-3.5" /> : <Pause aria-hidden="true" className="h-3.5 w-3.5" />}
+            {isPaused ? "Play" : "Pause"}
+          </button>
         </div>
       </div>
     </section>
