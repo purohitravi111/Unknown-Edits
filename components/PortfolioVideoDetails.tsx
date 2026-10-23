@@ -46,10 +46,9 @@ export default function PortfolioVideoDetails({
     const createPlayer = () => {
       if (cancelled || !playerHost.current) return;
 
-      // YouTube's player API supplies the runtime; oEmbed consistently supplies
-      // the public title and channel name, including when the hidden player omits its author.
-      const oEmbedUrl = `https://noembed.com/embed?url=${encodeURIComponent(videoUrl)}`;
-      fetch(oEmbedUrl)
+      // The YouTube player supplies runtime; YouTube oEmbed supplies title and channel.
+      const metadataUrl = `/api/video-metadata?url=${encodeURIComponent(videoUrl)}`;
+      fetch(metadataUrl)
         .then((response) => response.ok ? response.json() as Promise<{ title?: string; author_name?: string }> : null)
         .then((details) => {
           if (!details || cancelled) return;
