@@ -25,17 +25,31 @@ function formatDuration(seconds: number): string {
     : `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
-function compactVideoTitle(fullTitle: string): string {
+function compactVideoTitle(fullTitle: string, channel: string): string {
   // YouTube titles often append search keywords after a vertical bar. Keep
-  // the main title segment and limit its visible card label to four words.
-  const mainTitle = fullTitle.split("|")[0].trim() || fullTitle.trim();
-  const words = mainTitle
+  // the main title segment, filling short titles from the next segment while
+  // excluding channel-name words and limiting the card label to four words.
+  const segments = fullTitle.split("|").map((segment) => segment.trim()).filter(Boolean);
+  const mainTitle = segments[0] || fullTitle.trim();
+  const channelWords = new Set(channel.toLowerCase().split(/\s+/).filter(Boolean));
+  const cleanWords = (value: string) => value
     .split(/\s+/)
     .map((word) => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""))
     .filter(Boolean);
+  const mainWords = cleanWords(mainTitle);
+  const words = [...mainWords];
 
-  if (words.length <= 4) return mainTitle;
-  return `${words.slice(0, 4).join(" ")}…`;
+  if (words.length < 3) {
+    for (const word of cleanWords(segments.slice(1).join(" "))) {
+      if (channelWords.has(word.toLowerCase()) || words.includes(word)) continue;
+      words.push(word);
+      if (words.length === 4) break;
+    }
+  }
+
+  const visibleWords = words.slice(0, 4);
+  const hasMore = mainWords.length > 4 || words.length > visibleWords.length || segments.length > 1;
+  return `${visibleWords.join(" ")}${hasMore ? "…" : ""}` || mainTitle;
 }
 
 export default function PortfolioVideoDetails({
@@ -169,7 +183,7 @@ export default function PortfolioVideoDetails({
     ? metadata?.duration || ""
     : fallbackDuration;
   const info = [channel, duration].filter(Boolean).join(" • ");
-  const cardTitle = compactVideoTitle(title);
+  const cardTitle = compactVideoTitle(title, channel);
 
   return (
     <div ref={metadataRegion}>
