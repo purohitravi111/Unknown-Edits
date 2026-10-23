@@ -35,6 +35,16 @@ export default function PortfolioCard({
           // External providers supply their own thumbnails; don't run them through Next image optimization.
           // eslint-disable-next-line @next/next/no-img-element
           <img src={thumbnail} alt={project.projectName} className="absolute inset-0 h-full w-full object-cover" />
+        ) : source.kind === "embed" && source.previewEmbedUrl ? (
+          <iframe
+            src={source.previewEmbedUrl}
+            title={`${project.projectName} preview`}
+            loading="lazy"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="pointer-events-none absolute inset-0 h-full w-full border-0"
+            allow="encrypted-media; picture-in-picture"
+          />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 px-5 text-center text-white/70">
             <span className="text-sm">Add a thumbnail URL in data/content.ts</span>

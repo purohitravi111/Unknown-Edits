@@ -124,7 +124,7 @@ export const portfolio: PortfolioProject[] = [
     industry: "",
     description: "",
     videoUrl: "https://www.instagram.com/reel/DcsPfjmvC6A/?utm_source=ig_web_copy_link&dlrf=MWQ1ZGUxMzBkMA==&srtk=MWQ1ZGUxMzBkMA==", // PASTE THE MAIN VIDEO URL HERE
-    thumbnailUrl: "", // Instagram/TikTok/Vimeo/direct links usually need a thumbnail URL
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
     clientName: "",
