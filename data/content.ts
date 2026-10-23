@@ -224,8 +224,8 @@ export const portfolio: PortfolioProject[] = [
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
-    description: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s",
-    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    description: "",
+    videoUrl: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
@@ -244,8 +244,8 @@ export const portfolio: PortfolioProject[] = [
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
-    description: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s",
-    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    description: "",
+    videoUrl: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
@@ -263,8 +263,8 @@ export const portfolio: PortfolioProject[] = [
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
-    description: "https://youtube.com/shorts/GWj7psaiVtc?si=TIebFs0FOlRIk-bk",
-    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    description: "",
+    videoUrl: "https://youtube.com/shorts/GWj7psaiVtc?si=TIebFs0FOlRIk-bk", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
