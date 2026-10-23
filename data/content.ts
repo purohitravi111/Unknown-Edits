@@ -351,7 +351,7 @@ export const portfolio: PortfolioProject[] = [
     category: "Motion Graphics",
     industry: "",
     description: "",
-    videoUrl: "https://youtube.com/shorts/of3re6VOe0M?si=QWG_Gfpff0NOWge0", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
@@ -366,8 +366,30 @@ export const portfolio: PortfolioProject[] = [
     displayOrder: 2
   },
 
-  
 
+
+
+   {
+    projectName: "Short-form video title",
+    category: "Commercials",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtu.be/8qpMopHwQJ4?si=RYAB0ApfIPuoSZhr", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Commercials",
+    displayOrder: 2
+  },
+
+   
   
   
 ];
