@@ -6,11 +6,13 @@ export interface YouTubeVideoData {
 export interface YouTubePlayer {
   getVideoData(): YouTubeVideoData;
   getDuration(): number;
+  cueVideoById(videoId: string): void;
   destroy(): void;
 }
 
 interface YouTubePlayerEvent {
   target: YouTubePlayer;
+  data?: number;
 }
 
 interface YouTubePlayerOptions {
@@ -18,6 +20,7 @@ interface YouTubePlayerOptions {
   playerVars: Record<string, string | number>;
   events: {
     onReady: (event: YouTubePlayerEvent) => void;
+    onStateChange: (event: YouTubePlayerEvent) => void;
     onError: () => void;
   };
 }

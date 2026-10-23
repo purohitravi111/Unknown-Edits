@@ -32,12 +32,33 @@ export default function PortfolioVideoDetails({
   fallbackDuration,
 }: PortfolioVideoDetailsProps) {
   const youtubeId = getYouTubeVideoId(videoUrl);
+  const metadataRegion = useRef<HTMLDivElement>(null);
   const playerHost = useRef<HTMLDivElement>(null);
   const [metadata, setMetadata] = useState<VideoMetadata | null>(null);
   const [unavailable, setUnavailable] = useState(false);
 
   useEffect(() => {
-    if (!youtubeId || !playerHost.current) return;
+    if (!youtubeId) return;
+
+    let cancelled = false;
+    const metadataUrl = `/api/video-metadata?url=${encodeURIComponent(videoUrl)}`;
+    fetch(metadataUrl)
+      .then((response) => response.ok ? response.json() as Promise<{ title?: string; channel?: string }> : null)
+      .then((details) => {
+        if (!details || cancelled) return;
+        setMetadata((current) => ({
+          title: details.title || current?.title || "",
+          channel: details.channel || current?.channel || "",
+          duration: current?.duration || "",
+        }));
+      })
+      .catch(() => undefined);
+
+    return () => { cancelled = true; };
+  }, [youtubeId, videoUrl]);
+
+  useEffect(() => {
+    if (!youtubeId || !playerHost.current || !metadataRegion.current) return;
 
     let cancelled = false;
     let player: import("../lib/youtube-player").YouTubePlayer | null = null;
@@ -45,21 +66,6 @@ export default function PortfolioVideoDetails({
 
     const createPlayer = () => {
       if (cancelled || !playerHost.current) return;
-
-      // The YouTube player supplies runtime; YouTube oEmbed supplies title and channel.
-      const metadataUrl = `/api/video-metadata?url=${encodeURIComponent(videoUrl)}`;
-      fetch(metadataUrl)
-        .then((response) => response.ok ? response.json() as Promise<{ title?: string; channel?: string }> : null)
-        .then((details) => {
-          if (!details || cancelled) return;
-          setMetadata((current) => ({
-            title: current?.title || details.title || "",
-            channel: details.channel || current?.channel || "",
-            duration: current?.duration || "",
-          }));
-        })
-        .catch(() => undefined);
-
       loadYouTubeIframeApi()
         .then((api) => {
           if (cancelled || !playerHost.current) return;
@@ -94,7 +100,19 @@ export default function PortfolioVideoDetails({
                     pollTimer = window.setTimeout(readDetails, 500);
                   }
                 };
+                event.target.cueVideoById(youtubeId);
                 readDetails();
+              },
+              onStateChange: (event) => {
+                if (event.data === 5) {
+                  const details = event.target.getVideoData();
+                  const seconds = event.target.getDuration();
+                  setMetadata((current) => ({
+                    title: current?.title || details.title || "",
+                    channel: current?.channel || details.author || "",
+                    duration: seconds > 0 ? formatDuration(seconds) : current?.duration || "",
+                  }));
+                }
               },
               onError: () => setUnavailable(true),
             },
@@ -103,7 +121,7 @@ export default function PortfolioVideoDetails({
         .catch(() => setUnavailable(true));
     };
 
-    const host = playerHost.current;
+    const host = metadataRegion.current;
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
@@ -140,12 +158,12 @@ export default function PortfolioVideoDetails({
   const info = [channel, duration].filter(Boolean).join(" • ");
 
   return (
-    <>
-      {youtubeId && <div ref={playerHost} aria-hidden="true" className="sr-only" />}
+    <div ref={metadataRegion}>
+      {youtubeId && <div ref={playerHost} aria-hidden="true" className="pointer-events-none fixed -left-[10000px] top-0 h-[200px] w-[200px]" />}
       <h3 className="mb-1 text-xl font-bold text-[var(--primary)] transition-colors group-hover:text-[var(--accent)]">
         {title}
       </h3>
       {info && <p className="text-sm text-[var(--secondary)]">{info}</p>}
-    </>
+    </div>
   );
 }
