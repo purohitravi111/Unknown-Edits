@@ -1,230 +1,138 @@
-// "use client";
-// import React from 'react';
-// import { motion } from 'motion/react';
-// import { testimonials, clients } from '../data/content';
-// import { Star, Quote } from 'lucide-react';
-
-// export function Testimonials() {
-//   return (
-//     <section className="py-32 bg-[var(--bg-default)] relative z-10 overflow-hidden">
-//       <div className="max-w-7xl mx-auto px-6">
-        
-//         {/* Client Logos */}
-//         <div className="mb-32">
-//           <p className="text-center text-sm font-semibold tracking-widest text-[var(--secondary)] uppercase mb-10">
-//             WHY CHOOSE UNKNOWN EDITS
-//           </p>
-//           <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
-//             {clients.filter(c => c.featured).map((client, idx) => (
-//               <img 
-//                 key={idx}
-//                 src={client.logo} 
-//                 alt={client.name} 
-//                 className="h-8 md:h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300"
-//               />
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Testimonials */}
-//         <div className="grid md:grid-cols-2 gap-8">
-//           {testimonials.map((test, idx) => (
-//             <motion.div
-//               key={idx}
-//               initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-//               whileInView={{ opacity: 1, x: 0 }}
-//               viewport={{ once: true }}
-//               transition={{ duration: 0.5 }}
-//               className="p-10 rounded-[var(--radius-lg)] bg-[var(--bg-paper)] border border-white/5 relative"
-//             >
-//               <Quote className="absolute top-8 right-8 w-12 h-12 text-white/5 rotate-180" />
-//               <div className="flex gap-1 mb-6">
-//                 {[...Array(test.rating)].map((_, i) => (
-//                   <Star key={i} className="w-5 h-5 fill-[var(--accent)] text-[var(--accent)]" />
-//                 ))}
-//               </div>
-//               <p className="text-lg text-[var(--primary)] mb-8 italic leading-relaxed">
-//                 &quot;{test.review}&quot;
-//               </p>
-//               <div className="flex items-center gap-4">
-//                 <img src={test.photo} alt={test.clientName} className="w-12 h-12 rounded-full object-cover" />
-//                 <div>
-//                   <h4 className="font-bold text-[var(--primary)]">{test.clientName}</h4>
-//                   <p className="text-sm text-[var(--secondary)]">{test.company}</p>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
-import {
-  Clapperboard,
-  Zap,
-  Target,
-  Users,
-  ArrowRight,
-} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { testimonials } from "../data/content";
 
-const features = [
-  {
-    icon: Clapperboard,
-    title: "Cinematic Storytelling",
-    description:
-      "We transform raw footage into engaging stories that capture attention and keep viewers watching till the very end.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Turnaround",
-    description:
-      "Reliable delivery schedules without sacrificing creativity, quality or attention to detail.",
-  },
-  {
-    icon: Target,
-    title: "Attention To Detail",
-    description:
-      "Every cut, transition, sound effect and motion graphic is refined to create a polished final product.",
-  },
-  {
-    icon: Users,
-    title: "Collaborative Workflow",
-    description:
-      "Clear communication, transparent revisions and a smooth editing process from first draft to final delivery.",
-  },
-];
+function initials(name: string) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
 
 export function Testimonials() {
-  return (
-    <section className="py-32 bg-[var(--bg-default)] relative overflow-hidden">
+  const [activeIndex, setActiveIndex] = useState(0);
+  const entries = testimonials.filter((item) => item.review.trim() && item.clientName.trim());
 
-      {/* Background Glow */}
+  useEffect(() => {
+    if (entries.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-[var(--accent)]/5 blur-[180px]" />
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % entries.length);
+    }, 6500);
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+    return () => window.clearInterval(timer);
+  }, [entries.length]);
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: .6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
+  if (entries.length === 0) return null;
 
-          <p className="uppercase tracking-[0.35em] text-sm text-[var(--accent)] font-semibold mb-5">
-            WHY CHOOSE UNKNOWN EDITS
-          </p>
-
-          <h2 className="text-4xl md:text-6xl font-bold text-[var(--primary)] leading-tight mb-6">
-            Editing That Elevates
-            <br />
-            Every Story
-          </h2>
-
-          <p className="text-lg text-[var(--secondary)] leading-relaxed">
-            Every project is crafted with cinematic storytelling,
-            modern editing techniques and an obsession for quality—
-            ensuring your content stands out in today's crowded feeds.
-          </p>
-
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-
-{features.map((feature, index) => {
-  const Icon = feature.icon;
+  const active = entries[activeIndex % entries.length];
+  const previous = () => setActiveIndex((current) => (current - 1 + entries.length) % entries.length);
+  const next = () => setActiveIndex((current) => (current + 1) % entries.length);
 
   return (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.1,
-      }}
-      whileHover={{
-        y: -8,
-      }}
-      className="group relative overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-[var(--bg-paper)] p-10 transition-all duration-500 hover:border-[var(--accent)]/40 hover:shadow-[0_0_40px_rgba(255,0,0,0.08)]"
+    <section
+      id="testimonials"
+      className="relative overflow-hidden bg-[var(--bg-default)] py-24 md:py-32"
     >
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-transparent" />
-
-      <div className="relative z-10">
-
-        <div className="w-16 h-16 rounded-2xl bg-[var(--accent)]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
-          <Icon className="w-8 h-8 text-[var(--accent)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-[var(--accent)]/5 blur-[150px]" />
+      <div className="relative mx-auto max-w-5xl px-6">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+            Client testimonials
+          </p>
+          <h2 className="text-4xl font-black leading-tight text-[var(--primary)] md:text-5xl">
+            Good work speaks.<br />Our clients speak louder.
+          </h2>
         </div>
 
-        <h3 className="text-2xl font-bold text-[var(--primary)] mb-5">
-          {feature.title}
-        </h3>
+        <div className="relative mx-auto max-w-4xl rounded-[var(--radius-lg)] border border-white/10 bg-[var(--bg-paper)] px-7 py-9 shadow-[var(--glow)] md:px-14 md:py-12">
+          <Quote aria-hidden="true" className="absolute right-8 top-8 h-12 w-12 rotate-180 text-[var(--accent)]/15 md:right-12 md:top-10" />
 
-        <p className="text-[var(--secondary)] leading-8 mb-8">
-          {feature.description}
-        </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              aria-live="polite"
+            >
+              {active.rating > 0 && (
+                <div className="mb-6 flex items-center gap-1" aria-label={`${active.rating} out of 5 stars`}>
+                  {Array.from({ length: active.rating }, (_, index) => (
+                    <Star key={index} aria-hidden="true" className="h-4 w-4 fill-[var(--accent)] text-[var(--accent)]" />
+                  ))}
+                </div>
+              )}
+              <blockquote className="relative z-10 min-h-28 text-xl font-medium leading-relaxed text-[var(--primary)] md:text-2xl">
+                “{active.review}”
+              </blockquote>
 
-        <div className="flex items-center gap-2 text-[var(--accent)] font-semibold group-hover:gap-4 transition-all duration-300">
-          <span>Learn More</span>
-          <ArrowRight className="w-5 h-5" />
-        </div>
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-white/10 pt-7">
+                <div className="flex min-w-0 items-center gap-4">
+                  {active.photo ? (
+                    <Image
+                      src={active.photo}
+                      alt=""
+                      width={56}
+                      height={56}
+                      className="h-14 w-14 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div aria-hidden="true" className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 font-bold text-[var(--accent)]">
+                      {initials(active.clientName)}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="truncate font-bold text-[var(--primary)]">{active.clientName}</p>
+                    {active.company && <p className="mt-1 truncate text-sm text-[var(--secondary)]">{active.company}</p>}
+                  </div>
+                </div>
 
-      </div>
+                <div className="flex items-center gap-2" aria-label="Testimonial navigation">
+                  <button
+                    type="button"
+                    onClick={previous}
+                    aria-label="Previous testimonial"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
+                  >
+                    <ChevronLeft aria-hidden="true" className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    aria-label="Next testimonial"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
+                  >
+                    <ChevronRight aria-hidden="true" className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-      <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-[var(--accent)]/5 blur-3xl group-hover:bg-[var(--accent)]/10 transition-all duration-500" />
-
-    </motion.div>
-  );
-})}
-
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-24"
-        >
-          <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-[var(--bg-paper)] p-12 md:p-16 text-center">
-
-            <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent)]/5 via-transparent to-[var(--accent)]/5" />
-
-            <div className="relative z-10">
-
-              <h3 className="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-6">
-                Ready To Create
-                <br />
-                Something Exceptional?
-              </h3>
-
-              <p className="max-w-2xl mx-auto text-lg text-[var(--secondary)] leading-relaxed mb-10">
-                Whether you're building a personal brand, growing a YouTube
-                channel, or producing commercial content, Unknown Edits delivers
-                premium editing that helps your videos stand out.
-              </p>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-3 rounded-full bg-[var(--accent)] px-8 py-4 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              >
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
-              </a>
-
+          {entries.length > 1 && (
+            <div className="mt-7 flex items-center justify-center gap-2" aria-label="Choose testimonial">
+              {entries.map((item, index) => (
+                <button
+                  key={`${item.clientName}-${index}`}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`Show testimonial ${index + 1}`}
+                  aria-current={index === activeIndex ? "true" : undefined}
+                  className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-9 bg-[var(--accent)]" : "w-5 bg-white/20 hover:bg-white/40"}`}
+                />
+              ))}
             </div>
-          </div>
-        </motion.div>
-
+          )}
+        </div>
       </div>
     </section>
   );

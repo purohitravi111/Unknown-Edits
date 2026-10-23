@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 import type { 
   AgencyInfo, NavigationItem, HeroSection, Service, PortfolioProject, 
-  TeamMember, Testimonial, ClientLogo, WorkflowStep, PricingPackage, 
+  TeamMember, Testimonial, ClientLogo, WorkflowStep,
   FAQItem, ContactInfo, SocialMedia, FooterInfo 
 } from '../types';
 
@@ -27,7 +27,7 @@ export const navigation: NavigationItem[] = [
   { label: "Work", url: "#portfolio" },
   { label: "Workflow", url: "#workflow" },
   { label: "Team", url: "#team" },
-  { label: "Plans", url: "#pricing" },
+  { label: "Work With Us", url: "#pricing" },
   { label: "Contact", url: "#contact" }
 ];
 
@@ -160,23 +160,13 @@ export const team: TeamMember[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    clientName: "Cinematic Storytelling",
-    company: "Every Frame Matters",
-    photo: "/testimonials/storytelling.jpg",
-    rating: 5,
-    review:
-      "We believe great editing is more than cutting clips together. Every frame, transition, sound effect, and color grade is carefully crafted to tell a compelling story that keeps viewers engaged.",
-    videoTestimonial: ""
-  },
-  {
-    clientName: "Quality & Precision",
-    company: "Built for Creators & Brands",
-    photo: "/testimonials/quality.jpg",
-    rating: 5,
-    review:
-      "Unknown Edits focuses on delivering premium-quality edits with clear communication, attention to detail, and a workflow designed to bring every creative vision to life.",
-    videoTestimonial: ""
+    clientName: "", // REQUIRED: client's public display name
+    company: "", // OPTIONAL: company name or creator role
+    photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
+    rating: 0, // OPTIONAL: verified rating from 1 to 5; 0 hides the stars
+    review: "" // REQUIRED: exact client quote approved for public display
   }
+  // Duplicate this entry for each additional real client testimonial.
 ];
 
 export const clients: ClientLogo[] = [];
@@ -210,30 +200,6 @@ export const workflow: WorkflowStep[] = [
     description: "Rendered in the highest quality, optimized for every platform.",
     bulletPoints: ["Multi-format Export", "Source Files", "Performance Review"],
     icon: CheckCircle2
-  }
-];
-
-export const pricing: PricingPackage[] = [
-  {
-    packageName: "Short-Form Retainer",
-    price: "$2,500/mo",
-    features: ["15 Vertical Videos", "Advanced Captions", "Sound Design", "2 Revisions per video", "48-Hour Turnaround"],
-    cta: { label: "Get Started", url: "#contact" },
-    featured: false
-  },
-  {
-    packageName: "YouTube Pro",
-    price: "$4,000/mo",
-    features: ["4 Long-Form Videos", "Custom Thumbnails", "A/B Hook Variations", "Full Sound & Color", "Dedicated Editor"],
-    cta: { label: "Most Popular", url: "#contact" },
-    featured: true
-  },
-  {
-    packageName: "Agency Partner",
-    price: "Custom",
-    features: ["Unlimited Editing", "Motion Graphics Support", "Slack Channel", "Priority Rendering", "Strategy Calls"],
-    cta: { label: "Contact Us", url: "#contact" },
-    featured: false
   }
 ];
 

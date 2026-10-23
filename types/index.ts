@@ -97,7 +97,6 @@ export interface Testimonial {
   photo: string;
   rating: number;
   review: string;
-  videoTestimonial: string;
 }
 
 export interface ClientLogo {
@@ -113,14 +112,6 @@ export interface WorkflowStep {
   description: string;
   bulletPoints: string[];
   icon: LucideIcon;
-}
-
-export interface PricingPackage {
-  packageName: string;
-  price: string;
-  features: string[];
-  cta: CTA;
-  featured: boolean;
 }
 
 export interface FAQItem {
