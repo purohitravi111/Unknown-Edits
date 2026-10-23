@@ -415,7 +415,7 @@ export const team: TeamMember[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    clientName: "Alex Morgan", // SAMPLE ONLY: replace with a real client's public name
+    clientName: "Ankish Jain", // SAMPLE ONLY: replace with a real client's public name
     company: "Content Creator · Sample", // SAMPLE ONLY: replace with their approved role/company
     photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
     rating: 5, // SAMPLE ONLY: replace with a verified client rating, or use 0 to hide
@@ -430,6 +430,16 @@ export const testimonials: Testimonial[] = [
     review: "Communication was smooth throughout the project, and the finished cut matched the tone we wanted for our brand.", // SAMPLE ONLY: replace with the client's exact approved quote
     isSample: true
   },
+
+  {
+    clientName: "Rakesh Mahajan", // SAMPLE ONLY: replace with a real client's public name
+    company: "Travel creator", // SAMPLE ONLY: replace with their approved role/company
+    photo: "", // OPTIONAL: approved photo path under public/; initials show if blank
+    rating: 5, // SAMPLE ONLY: replace with a verified client rating, or use 0 to hide
+    review: "Editing was exceptional, i didn't expected that result, so good.", // SAMPLE ONLY: replace with the client's exact approved quote
+    isSample: true
+  },
+  
   {
     clientName: "Taylor Chen", // SAMPLE ONLY: replace with a real client's public name
     company: "YouTube Creator · Sample", // SAMPLE ONLY: replace with their approved role/company
