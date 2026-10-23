@@ -220,13 +220,50 @@ export const portfolio: PortfolioProject[] = [
     displayOrder: 1
   },
   
-  
-  
   {
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
-    description: "",
+    description: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s",
+    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Short Form",
+    displayOrder: 2
+  },
+
+  {
+    projectName: "Short-form video title",
+    category: "Short Form",
+    industry: "",
+    description: "https://youtube.com/shorts/fH4xj079spQ?si=uTV2BiwOkazjRD6s",
+    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Short Form",
+    displayOrder: 2
+  },
+  {
+    projectName: "Short-form video title",
+    category: "Short Form",
+    industry: "",
+    description: "https://youtube.com/shorts/GWj7psaiVtc?si=TIebFs0FOlRIk-bk",
     videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
