@@ -121,7 +121,7 @@ export const portfolio: PortfolioProject[] = [
   {
     projectName: "Short-form video title",
     category: "Short Form",
-    industry: "",
+    industry: "https://www.instagram.com/reel/DcsPfjmvC6A/?utm_source=ig_web_copy_link&dlrf=MWQ1ZGUxMzBkMA==&srtk=MWQ1ZGUxMzBkMA==",
     description: "",
     videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // Instagram/TikTok/Vimeo/direct links usually need a thumbnail URL
