@@ -104,7 +104,7 @@ export const portfolio: PortfolioProject[] = [
     category: "Long Form",
     industry: "",
     description: "",
-    videoUrl: "https://youtu.be/-83iPP77htA?si=77FxW7Iw4zkRVVa4", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "https://youtu.be/aGqK2UpsWQY?si=aSW691xOiJ2yiqW6", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
@@ -118,12 +118,76 @@ export const portfolio: PortfolioProject[] = [
     format: "Long Form",
     displayOrder: 1
   },
+
+  {
+    projectName: "Long-form video title",
+    category: "Long Form",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtu.be/YOT_Z1p2YTk?si=twj9YEaGSjO-q3xS", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Long Form",
+    displayOrder: 1
+  },
+
+   {
+    projectName: "Long-form video title",
+    category: "Long Form",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtu.be/4LEI6fmMS8U?si=1LlGjHxk_dt8Loey", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Long Form",
+    displayOrder: 1
+  },
+
+
+  {
+    projectName: "Long-form video title",
+    category: "Long Form",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtu.be/VPI8LDMEUQg?si=9LTD-AAeW7m8qwzt", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Long Form",
+    displayOrder: 1
+  },
+  
+  
+  
   {
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
     description: "",
-    videoUrl: "https://youtube.com/shorts/fZ6Ey3jJmPY?si=3xFHgNHhp8jnKMta", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
