@@ -45,6 +45,22 @@ export default function PortfolioVideoDetails({
 
     const createPlayer = () => {
       if (cancelled || !playerHost.current) return;
+
+      // YouTube's player API supplies the runtime; oEmbed consistently supplies
+      // the public title and channel name, including when the hidden player omits its author.
+      const oEmbedUrl = `https://noembed.com/embed?url=${encodeURIComponent(videoUrl)}`;
+      fetch(oEmbedUrl)
+        .then((response) => response.ok ? response.json() as Promise<{ title?: string; author_name?: string }> : null)
+        .then((details) => {
+          if (!details || cancelled) return;
+          setMetadata((current) => ({
+            title: current?.title || details.title || "",
+            channel: details.author_name || current?.channel || "",
+            duration: current?.duration || "",
+          }));
+        })
+        .catch(() => undefined);
+
       loadYouTubeIframeApi()
         .then((api) => {
           if (cancelled || !playerHost.current) return;
@@ -68,11 +84,11 @@ export default function PortfolioVideoDetails({
                   const details = event.target.getVideoData();
                   const seconds = event.target.getDuration();
                   if (details.title || details.author) {
-                    setMetadata({
-                      title: details.title || "",
-                      channel: details.author || "",
-                      duration: seconds > 0 ? formatDuration(seconds) : "",
-                    });
+                    setMetadata((current) => ({
+                      title: current?.title || details.title || "",
+                      channel: current?.channel || details.author || "",
+                      duration: seconds > 0 ? formatDuration(seconds) : current?.duration || "",
+                    }));
                   }
                   attempts += 1;
                   if (attempts < 12 && (!details.title || seconds <= 0)) {
