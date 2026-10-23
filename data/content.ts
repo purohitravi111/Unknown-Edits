@@ -165,7 +165,47 @@ export const portfolio: PortfolioProject[] = [
     category: "Long Form",
     industry: "",
     description: "",
+    videoUrl: "https://youtu.be/YXUQHmeAPfo?si=Z2C3ByW3-LEZOA2K", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Long Form",
+    displayOrder: 1
+  },
+
+  {
+    projectName: "Long-form video title",
+    category: "Long Form",
+    industry: "",
+    description: "",
     videoUrl: "https://youtu.be/VPI8LDMEUQg?si=9LTD-AAeW7m8qwzt", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Long Form",
+    displayOrder: 1
+  },
+
+  {
+    projectName: "Long-form video title",
+    category: "Long Form",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtu.be/8qpMopHwQJ4?si=RYAB0ApfIPuoSZhr", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
