@@ -220,12 +220,14 @@ export const portfolio: PortfolioProject[] = [
     displayOrder: 1
   },
   
+ 
+
   {
     projectName: "Short-form video title",
     category: "Short Form",
     industry: "",
     description: "",
-    videoUrl: "https://youtube.com/shorts/3f798dU5y74?si=8nSYlycNS7w4EwaM", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "https://youtube.com/shorts/oM8_xwYHxGU?si=H5q3zo2qi2zXD8Yc", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
@@ -239,6 +241,27 @@ export const portfolio: PortfolioProject[] = [
     format: "Short Form",
     displayOrder: 2
   },
+
+  {
+    projectName: "Short-form video title",
+    category: "Short Form",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtube.com/shorts/K3j3G87qYXY?si=eXWsboSt6rqjcbPl", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Short Form",
+    displayOrder: 2
+  },
+
 
   {
     projectName: "Short-form video title",
@@ -259,6 +282,7 @@ export const portfolio: PortfolioProject[] = [
     format: "Short Form",
     displayOrder: 2
   },
+  
   {
     projectName: "Short-form video title",
     category: "Short Form",
@@ -277,7 +301,75 @@ export const portfolio: PortfolioProject[] = [
     caseStudy: false,
     format: "Short Form",
     displayOrder: 2
-  }
+  },
+
+
+
+
+   {
+    projectName: "Short-form video title",
+    category: "Motion Graphics",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtube.com/shorts/3f798dU5y74?si=8nSYlycNS7w4EwaM", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Motion Graphics",
+    displayOrder: 2
+  },
+
+  {
+    projectName: "Short-form video title",
+    category: "Motion Graphics",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtube.com/shorts/of3re6VOe0M?si=QWG_Gfpff0NOWge0", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Motion Graphics",
+    displayOrder: 2
+  },
+
+   {
+    projectName: "Short-form video title",
+    category: "Motion Graphics",
+    industry: "",
+    description: "",
+    videoUrl: "https://youtube.com/shorts/of3re6VOe0M?si=QWG_Gfpff0NOWge0", // PASTE THE MAIN VIDEO URL HERE
+    thumbnailUrl: "", // YouTube and Instagram previews are automatic; other links may need a thumbnail URL
+    embedUrl: "", // Optional official player URL for a provider not detected automatically
+    projectUrl: "",
+    clientName: "",
+    softwareUsed: [],
+    duration: "",
+    tags: [],
+    featured: false,
+    platform: "",
+    caseStudy: false,
+    format: "Motion Graphics",
+    displayOrder: 2
+  },
+
+  
+
+  
+  
 ];
 
 export const team: TeamMember[] = [
