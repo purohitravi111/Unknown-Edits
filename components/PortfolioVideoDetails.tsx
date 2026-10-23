@@ -49,12 +49,12 @@ export default function PortfolioVideoDetails({
       // The YouTube player supplies runtime; YouTube oEmbed supplies title and channel.
       const metadataUrl = `/api/video-metadata?url=${encodeURIComponent(videoUrl)}`;
       fetch(metadataUrl)
-        .then((response) => response.ok ? response.json() as Promise<{ title?: string; author_name?: string }> : null)
+        .then((response) => response.ok ? response.json() as Promise<{ title?: string; channel?: string }> : null)
         .then((details) => {
           if (!details || cancelled) return;
           setMetadata((current) => ({
             title: current?.title || details.title || "",
-            channel: details.author_name || current?.channel || "",
+            channel: details.channel || current?.channel || "",
             duration: current?.duration || "",
           }));
         })
