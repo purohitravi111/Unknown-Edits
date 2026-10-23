@@ -10,7 +10,7 @@ Everything is centrally managed through simple data files and asset folders.
 *   `config/theme.ts` - All visual theme configuration (colors, borders, speeds).
 *   `config/seo.ts` - Meta tags, OpenGraph, and Search Engine data.
 *   `public/images/` - Standard images
-*   `public/videos/` - Background and preview videos
+*   `public/videos/` - Background videos and saved media backups
 *   `public/logos/` - Main agency logo and favicon
 *   `public/team/` - Headshots
 *   `public/testimonials/` - Client review photos
@@ -32,10 +32,11 @@ Find the `services` array in `/data/content.ts`.
 *   **Featured:** Set `featured: true` to highlight a specific service.
 
 ### Managing Portfolio Projects
-Find the `portfolio` array.
-*   Add a new object following the same structure. 
-*   Fill out `projectName`, `category`, and `thumbnail` (reference your files in the public folder like `"/images/my-thumbnail.jpg"`).
-*   Categories are dynamically generated from the `categories` array.
+Find the `portfolio` array in `data/content.ts`. The first two entries are ready-to-fill examples: one long-form slot and one short-form slot. Paste your video link into `videoUrl`. An entry with an empty `videoUrl` stays hidden on the site. To add another video, copy an entry and change its title, category, and `displayOrder`.
+
+Supported links include YouTube, public Instagram Reels/posts, public TikTok videos, Vimeo, and direct `.mp4`, `.webm`, or `.ogg` file links. YouTube thumbnails are loaded automatically. For Instagram, TikTok, Vimeo, and direct file links, paste a publicly accessible image URL in `thumbnailUrl` to show a thumbnail. Without one, the site uses a simple placeholder card.
+
+Some sites do not allow their videos to be embedded, and private/restricted posts cannot be played on another site. For another host, use its official embed URL in the optional `embedUrl` field. If the host does not provide an embeddable player, the portfolio shows a link to watch on the original platform.
 
 ### Adding Team Members
 Find the `team` array. Add their `name`, `role`, `bio`, and `skills`. Point the `photo` property to `"/team/their-photo.jpg"`.

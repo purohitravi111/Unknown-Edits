@@ -58,9 +58,12 @@ export interface PortfolioProject {
   category: string;
   industry: string;
   description: string;
-  thumbnail: string;
-  previewVideo: string;
-  fullVideo: string;
+  /** Public video page URL (YouTube, Instagram, TikTok, Vimeo, or direct video file). */
+  videoUrl: string;
+  /** Optional thumbnail URL. YouTube thumbnails are detected automatically. */
+  thumbnailUrl: string;
+  /** Optional provider iframe URL for hosts without automatic embed support. */
+  embedUrl?: string;
   projectUrl: string;
   clientName: string;
   softwareUsed: string[];

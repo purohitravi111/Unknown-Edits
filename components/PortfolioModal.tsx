@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { PortfolioProject } from "../types";
 import React, { useEffect, useState } from "react";
+import { getVideoSource } from "../lib/video";
 
 
 
@@ -21,6 +22,14 @@ export default function PortfolioModal({
 }: Props) {
 
   const [isVertical, setIsVertical] = useState(false);
+  const source = project
+    ? getVideoSource(project.videoUrl, project.embedUrl, project.thumbnailUrl)
+    : null;
+
+  useEffect(() => {
+    setIsVertical(Boolean(project && project.format === "Short Form"));
+  }, [project]);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -67,17 +76,27 @@ flex flex-col`}
           >
             <button
               onClick={onClose}
+              aria-label="Close video"
               className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
             >
               <X size={20} />
             </button>
 
    <div
-  className="relative z-50 flex-1 bg-black"
+  className="relative z-0 flex-1 bg-black"
   
 >
+  {source?.kind === "embed" ? (
+    <iframe
+      src={source.embedUrl}
+      title={project.projectName}
+      allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen"
+      allowFullScreen
+      className="h-full w-full border-0"
+    />
+  ) : source?.kind === "file" ? (
   <video
-  src={project.fullVideo}
+  src={source.fileUrl}
   controls
   autoPlay
   playsInline
@@ -88,6 +107,15 @@ flex flex-col`}
   }}
   className="w-full h-full object-contain"
 />
+  ) : (
+    <div className="flex h-full flex-col items-center justify-center gap-4 px-8 text-center text-white">
+      <p className="text-lg">This link cannot be embedded automatically.</p>
+      <a href={project.videoUrl} target="_blank" rel="noreferrer" className="rounded-full bg-white px-5 py-3 font-semibold text-black hover:bg-gray-200">
+        Watch on the original platform
+      </a>
+      <p className="max-w-lg text-sm text-gray-400">For an unlisted or custom video host, add its official embed URL to the <code>embedUrl</code> field in data/content.ts.</p>
+    </div>
+  )}
 </div>
 
             <div className="p-8 overflow-y-auto">

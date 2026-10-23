@@ -12,7 +12,7 @@ export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const displayProjects = [...portfolio].sort(
+  const displayProjects = portfolio.filter((project) => project.videoUrl.trim()).sort(
     (a, b) => a.displayOrder - b.displayOrder
   );
 
@@ -75,6 +75,11 @@ export function Portfolio() {
               ))}
             </AnimatePresence>
           </div>
+          {filteredProjects.length === 0 && (
+            <p className="mt-8 text-center text-[var(--secondary)]">
+              Videos will appear here after you add their links in data/content.ts.
+            </p>
+          )}
         </div>
       </section>
 
