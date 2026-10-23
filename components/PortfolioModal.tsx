@@ -91,6 +91,7 @@ flex flex-col`}
       src={source.embedUrl}
       title={project.projectName}
       allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen"
+      sandbox={source.restrictExternalNavigation ? "allow-scripts allow-same-origin allow-presentation" : undefined}
       allowFullScreen
       className="h-full w-full border-0"
     />

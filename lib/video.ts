@@ -1,5 +1,5 @@
 export type VideoSource =
-  | { kind: "embed"; embedUrl: string; thumbnailUrl: string | null; previewEmbedUrl?: string }
+  | { kind: "embed"; embedUrl: string; thumbnailUrl: string | null; previewEmbedUrl?: string; restrictExternalNavigation?: boolean }
   | { kind: "file"; fileUrl: string; thumbnailUrl: string | null }
   | { kind: "link"; linkUrl: string; thumbnailUrl: string | null };
 
@@ -59,7 +59,9 @@ export function getVideoSource(
         // Instagram renders the post's own preview in its official embed. It no longer
         // consistently exposes a standalone thumbnail URL for public posts.
         thumbnailUrl: thumbnail,
-        previewEmbedUrl: thumbnail ? undefined : `https://www.instagram.com/${kind}/${encodeURIComponent(parts[1])}/embed/`
+        previewEmbedUrl: thumbnail ? undefined : `https://www.instagram.com/${kind}/${encodeURIComponent(parts[1])}/embed/`,
+        // Keep Instagram's own links confined to the player iframe instead of opening a new tab.
+        restrictExternalNavigation: true
       };
     }
   }
