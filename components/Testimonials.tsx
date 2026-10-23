@@ -71,11 +71,9 @@ export function Testimonials() {
           <h2 className="text-3xl font-black leading-tight text-[var(--primary)] md:text-4xl">
             Kind words from clients
           </h2>
-          {entries.some((item) => item.isSample) && (
-            <p className="mx-auto mt-3 inline-flex rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
-              Sample content — replace with real client feedback before publishing
-            </p>
-          )}
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[var(--secondary)] md:text-base">
+            A little insight into the care, craft, and collaboration behind every project.
+          </p>
         </div>
 
         <div className="testimonial-marquee-viewport" aria-label="Client testimonials">
