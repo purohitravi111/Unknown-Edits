@@ -81,7 +81,7 @@ export const services: Service[] = [
     description: "Direct-response video ads for Facebook, Instagram, and YouTube that actually convert.",
     icon: Clapperboard,
     image: "/images/service-commercial.jpg",
-    video: "",
+    video: "https://youtu.be/-83iPP77htA?si=77FxW7Iw4zkRVVa4",
     cta: { label: "Learn More", url: "#contact" },
     displayOrder: 3,
     featured: true
