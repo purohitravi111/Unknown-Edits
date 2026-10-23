@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css'; // Global styles
 import { ThemeProvider } from '../components/ThemeProvider';
+import { MagicCursor } from '../components/MagicCursor';
 import { seoConfig } from '../config/seo';
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className="bg-[#0A0A0A] text-white" suppressHydrationWarning>
         <ThemeProvider>
           {children}
+          <MagicCursor />
         </ThemeProvider>
       </body>
     </html>
