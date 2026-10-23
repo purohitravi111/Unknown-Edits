@@ -59,7 +59,7 @@ export function Portfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
-                <div key={project.projectName}>
+                <div key={project.videoUrl}>
                   <PortfolioCard
                     project={project}
                     onClick={() => {

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { PortfolioProject } from "../types";
 import { Play } from "lucide-react";
 import { getVideoSource } from "../lib/video";
+import PortfolioVideoDetails from "./PortfolioVideoDetails";
 
 interface PortfolioCardProps {
   project: PortfolioProject;
@@ -20,7 +21,7 @@ export default function PortfolioCard({
 
   return (
     <motion.div
-      layoutId={project.projectName}
+      layoutId={project.videoUrl}
       className="group cursor-pointer block"
       onClick={onClick}
     >
@@ -68,15 +69,12 @@ export default function PortfolioCard({
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-[var(--primary)] mb-1 group-hover:text-[var(--accent)] transition-colors">
-        {project.projectName}
-      </h3>
-
-      {(project.clientName || project.duration) && (
-        <p className="text-sm text-[var(--secondary)]">
-          {[project.clientName, project.duration].filter(Boolean).join(" • ")}
-        </p>
-      )}
+      <PortfolioVideoDetails
+        videoUrl={project.videoUrl}
+        fallbackTitle={project.projectName}
+        fallbackChannel={project.clientName}
+        fallbackDuration={project.duration}
+      />
     </motion.div>
   );
 }

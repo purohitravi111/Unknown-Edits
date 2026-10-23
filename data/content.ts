@@ -100,7 +100,7 @@ export const services: Service[] = [
 
 export const portfolio: PortfolioProject[] = [
   {
-    projectName: "Charaj | Aghori Muzik | New Navratri Songs",
+    projectName: "Long-form video title",
     category: "Long Form",
     industry: "",
     description: "",
@@ -108,9 +108,9 @@ export const portfolio: PortfolioProject[] = [
     thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
-    clientName: "Aghori Muzik",
+    clientName: "",
     softwareUsed: [],
-    duration: "0:20",
+    duration: "",
     tags: [],
     featured: false,
     platform: "",

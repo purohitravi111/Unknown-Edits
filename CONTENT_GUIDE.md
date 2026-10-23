@@ -32,7 +32,7 @@ Find the `services` array in `/data/content.ts`.
 *   **Featured:** Set `featured: true` to highlight a specific service.
 
 ### Managing Portfolio Projects
-Find the `portfolio` array in `data/content.ts`. Each video card uses `projectName` for the video title, `clientName` for the creator or channel, and `duration` for the runtime (for example, `12:34`). Enter those values for each video so the cards show their own information. Paste the video link into `videoUrl`. An entry with an empty `videoUrl` stays hidden on the site. To add another video, copy an entry and change its title, channel, runtime, category, video link, and `displayOrder`.
+Find the `portfolio` array in `data/content.ts`. Paste or replace the link in `videoUrl`; for public YouTube videos, the card automatically gets the video title, channel name, and runtime from YouTube. `projectName`, `clientName`, and `duration` are only fallback text if metadata cannot be loaded. An entry with an empty `videoUrl` stays hidden on the site. To add another video, copy an entry and change its category, video link, and `displayOrder`.
 
 Supported links include YouTube, public Instagram Reels/posts, public TikTok videos, Vimeo, and direct `.mp4`, `.webm`, or `.ogg` file links. YouTube thumbnails are loaded automatically. For Instagram, TikTok, Vimeo, and direct file links, paste a publicly accessible image URL in `thumbnailUrl` to show a thumbnail. Without one, the site uses a simple placeholder card.
 
