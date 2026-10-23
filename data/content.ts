@@ -121,9 +121,9 @@ export const portfolio: PortfolioProject[] = [
   {
     projectName: "Short-form video title",
     category: "Short Form",
-    industry: "https://www.instagram.com/reel/DcsPfjmvC6A/?utm_source=ig_web_copy_link&dlrf=MWQ1ZGUxMzBkMA==&srtk=MWQ1ZGUxMzBkMA==",
+    industry: "",
     description: "",
-    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "https://www.instagram.com/reel/DcsPfjmvC6A/?utm_source=ig_web_copy_link&dlrf=MWQ1ZGUxMzBkMA==&srtk=MWQ1ZGUxMzBkMA==", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // Instagram/TikTok/Vimeo/direct links usually need a thumbnail URL
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
