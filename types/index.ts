@@ -97,6 +97,7 @@ export interface Testimonial {
   photo: string;
   rating: number;
   review: string;
+  isSample?: boolean;
 }
 
 export interface ClientLogo {

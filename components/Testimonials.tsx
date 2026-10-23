@@ -47,6 +47,11 @@ export function Testimonials() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
             Client testimonials
           </p>
+          {entries.some((item) => item.isSample) && (
+            <p className="mb-4 inline-flex rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
+              Sample content — replace with real client feedback before publishing
+            </p>
+          )}
           <h2 className="text-4xl font-black leading-tight text-[var(--primary)] md:text-5xl">
             Good work speaks.<br />Our clients speak louder.
           </h2>
