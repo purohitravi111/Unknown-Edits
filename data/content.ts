@@ -104,7 +104,7 @@ export const portfolio: PortfolioProject[] = [
     category: "Long Form",
     industry: "",
     description: "",
-    videoUrl: "", // PASTE THE MAIN VIDEO URL HERE
+    videoUrl: "https://youtu.be/-83iPP77htA?si=77FxW7Iw4zkRVVa4", // PASTE THE MAIN VIDEO URL HERE
     thumbnailUrl: "", // Optional thumbnail URL; YouTube thumbnails are automatic
     embedUrl: "", // Optional official player URL for a provider not detected automatically
     projectUrl: "",
