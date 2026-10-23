@@ -25,6 +25,19 @@ function formatDuration(seconds: number): string {
     : `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
+function compactVideoTitle(fullTitle: string): string {
+  // YouTube titles often append search keywords after a vertical bar. Keep
+  // the main title segment and limit its visible card label to four words.
+  const mainTitle = fullTitle.split("|")[0].trim() || fullTitle.trim();
+  const words = mainTitle
+    .split(/\s+/)
+    .map((word) => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""))
+    .filter(Boolean);
+
+  if (words.length <= 4) return mainTitle;
+  return `${words.slice(0, 4).join(" ")}…`;
+}
+
 export default function PortfolioVideoDetails({
   videoUrl,
   fallbackTitle,
@@ -156,12 +169,17 @@ export default function PortfolioVideoDetails({
     ? metadata?.duration || ""
     : fallbackDuration;
   const info = [channel, duration].filter(Boolean).join(" • ");
+  const cardTitle = compactVideoTitle(title);
 
   return (
     <div ref={metadataRegion}>
       {youtubeId && <div ref={playerHost} aria-hidden="true" className="pointer-events-none fixed -left-[10000px] top-0 h-[200px] w-[200px]" />}
-      <h3 className="mb-1 text-xl font-bold text-[var(--primary)] transition-colors group-hover:text-[var(--accent)]">
-        {title}
+      <h3
+        title={title}
+        aria-label={title}
+        className="mb-1 text-xl font-bold text-[var(--primary)] transition-colors group-hover:text-[var(--accent)]"
+      >
+        {cardTitle}
       </h3>
       {info && <p className="text-sm text-[var(--secondary)]">{info}</p>}
     </div>
