@@ -23,12 +23,12 @@ export function Footer() {
                   <Instagram className="w-5 h-5" />
                 </a>
               )}
-              {/* {socialMedia.youtube && (
+              { {socialMedia.youtube && (
                 <a href={socialMedia.youtube} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[var(--secondary)] hover:text-[var(--accent)] hover:bg-white/10 transition-all">
                   <Youtube className="w-5 h-5" />
                 </a>
               )}
-              {socialMedia.twitter && (
+              {/*socialMedia.twitter && (
                 <a href={socialMedia.twitter} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[var(--secondary)] hover:text-[var(--accent)] hover:bg-white/10 transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
