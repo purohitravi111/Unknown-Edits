@@ -515,7 +515,7 @@ export const contact: ContactInfo = {
 
 export const socialMedia: SocialMedia = {
   instagram: "https://www.instagram.com/unknownedits_29/?utm_source=ig_web_button_share_sheet",
-  youtube: "https://youtube.com/@unknownedits",
+  youtube: "https://youtube.com/@unknownedits_26?si=NRpmRh2gXQGwR53U",
   linkedin: "https://linkedin.com/company/unknownedits",
   twitter: "https://twitter.com/unknownedits",
   tiktok: "https://tiktok.com/@unknownedits",
